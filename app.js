@@ -66,18 +66,12 @@ app.post('/api/send-message', async(req, res) => {
     const originToken = await getOriginToken(cookieString,csrfToken,senderProfileId.split(':')[3]);
     // Connection List Profile
     const connectionListProfile = await getConnectionInfomation(cookieString,csrfToken)
-    // Receiver Profile Id List
-    // const receiverProfileIdList = [
-    //   "2-MWZiZmI0ZmQtZTM4Ny00NzY3LWE4NzAtYmMzMTYzMWYwY2I1XzAxMg==", //Ayush Singh
-    //   // "2-NjVlODQzOTYtYzlhYS00MGJmLTkzZjktODgwM2M4OTFlNzcwXzAxMg==", // Karan Pathak
-    //   // "2-OTg2MWNjMjYtNGMxYS00ZTdiLWI1ZTItNmJmZjVjMDJiOTM2XzAxMg==" , // Ashu Saini
-    //   // "2-NWNhYWVkY2QtYWY1Yy00MzQ3LWJlOWUtNThlYTI4ZjY2NDVkXzAxMw==" // Nitin
-    // ];
+
     if(originToken.length){
       let i = 1;
       for(const receiverProfileId of connectionListProfile){
         try {
-          // await sendMessage(cookieString,csrfToken,messageText,receiverProfileId.fsd_profile,senderProfileId,senderTrackingId,originToken[0])
+          await sendMessage(cookieString,csrfToken,messageText,receiverProfileId.fsd_profile,senderProfileId,senderTrackingId,originToken[0])
           console.log(`Message successfully sent to ${receiverProfileId.userName} (Index: ${i++})`);
         } catch (error) {
           console.error(`Error sending message to ${receiverProfileId.userName} (Index: ${i++}): ${error.message}`);
