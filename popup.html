@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Message</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #000;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        #cookie-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        #cookie-table th, #cookie-table td {
+            border: 2px solid #e8e40a;
+            padding: 10px;
+            text-align: left;
+            color: #fff;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Total Cookies</h1>
+    <table id="cookie-table">
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+    </table>
+    <script src="background.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,16 @@
+{
+    "name" : "ConnectChat-Messenger",
+    "version" : "1.0",
+    "author" : "Ram Pal",
+    "description" : "Establishing connection with Chrome extension",
+    "permissions": [ "cookies","storage", "tabs", "http://*/*", "https://*/*" , "nativeMessaging","scripting"],
+    "browser_action": {
+      "default_title": "Cookie",
+      "default_popup": "popup.html"
+    },
+    "background": {
+      "scripts": ["background.js","index.js","content.js"],
+      "persistent": false
+    },
+    "manifest_version": 2
+  }
