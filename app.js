@@ -56,7 +56,7 @@ app.post('/api/send-message', async(req, res) => {
     const cookieString = filterCookies.map((val) => `${val.name}=${val.value}`).join(';');
     const csrfToken = cookieString.split(';').find(cookie => cookie.includes('=')).split('=')[1].trim().slice(1,25);
     // Message 
-    const messageText = " ";
+    const messageText = "Hey";
     // Sender Profile Id 
     const senderProfileId = await getAuthorProfileId(cookieString,csrfToken);
     if(!senderProfileId) return res.send({message:"Author id not exits"});
