@@ -71,7 +71,7 @@ app.post('/api/send-message', async(req, res) => {
       let i = 1;
       for(const receiverProfileId of connectionListProfile){
         try {
-          await sendMessage(cookieString,csrfToken,messageText,receiverProfileId.fsd_profile,senderProfileId,senderTrackingId,originToken[0])
+          // await sendMessage(cookieString,csrfToken,messageText,receiverProfileId.fsd_profile,senderProfileId,senderTrackingId,originToken[0])
           console.log(`Message successfully sent to ${receiverProfileId.userName} (Index: ${i++})`);
         } catch (error) {
           console.error(`Error sending message to ${receiverProfileId.userName} (Index: ${i++}): ${error.message}`);
@@ -111,8 +111,6 @@ const getAuthorProfileId = async (cookieString,csrfToken)=>{
   })
 }
 
-
-
 const getOriginToken = async (cookieString, csrfToken,senderProfileId) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -145,9 +143,6 @@ const getOriginToken = async (cookieString, csrfToken,senderProfileId) => {
   });
 };
 
-
-
-
 const getConnectionInfomation = async (cookieString, csrfToken) => {
   return new Promise(async (resolve, reject) => {
     try {
@@ -164,20 +159,16 @@ const getConnectionInfomation = async (cookieString, csrfToken) => {
         },
         maxRedirects: 5,
       });
-
-      const result = response.data.elements.map((value) => {
+        const result = response.data.elements.map((value) => {
         const firstName = value.connectedMemberResolutionResult?.firstName || "";
         const lastName = value.connectedMemberResolutionResult?.lastName || "";
-
         return {
           "userName": firstName + " " + lastName,
           "fsd_profile": value.connectedMember
         };
       });
-
-      console.log("Connection list lenngth : " + Cresult.length);
+      console.log("Connection list lenngth : " + result.length);
       resolve(result);
-
     } catch (error) {
       console.log("error : ", error);
       resolve([]);
